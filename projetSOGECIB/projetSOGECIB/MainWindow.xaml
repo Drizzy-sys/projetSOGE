@@ -14,7 +14,7 @@
                     <RadioButton GroupName="taux" IsChecked="{Binding SimuVM.IsFix, Mode=TwoWay}" >Fixes</RadioButton>
                     <RadioButton GroupName="taux" >Variables</RadioButton>
                     <!--TextBlock Text="{Binding SimuVM.IsFix}"/-->
-                    <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}"/>
+                    <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="163,97,0,0"/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Graph">
