@@ -5,19 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TabControl Margin="0,10,10.333,-0.333">
-            <TabItem Header="Settings">
-                <StackPanel Margin="40">
-                    <TextBlock Text="Payeur de taux : "></TextBlock>
-                    <RadioButton GroupName="taux" IsChecked="{Binding SimuVM.IsFix, Mode=TwoWay}" >Fixes</RadioButton>
-                    <RadioButton GroupName="taux" >Variables</RadioButton>
-                    <!--TextBlock Text="{Binding SimuVM.IsFix}"/-->
-                    <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="163,97,0,0"/>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Graph">
+        Title="MainWindow" Height="600" Width="1000">
+    <TabControl Margin="0,10,10.333,-0.333">
+        <TabItem Header="Settings du Swap">
+            <StackPanel Margin="50">
+                <Grid>
+                    <Label Content="Valeur du nominal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Width="100" TextWrapping="Wrap" Text="{Binding SimuVM.Nominal, Mode=TwoWay}" VerticalAlignment="Top" Margin="150,0,0,0"/>
+                    <TextBlock Text="{Binding SimuVM.Nominal}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0"/>
+
+                    <TextBlock Text="Payeur de taux :"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+                    <RadioButton GroupName="taux" IsChecked="{Binding SimuVM.IsFix, Mode=TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,0,0,0">Fixes</RadioButton>
+                    <RadioButton GroupName="taux"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="172,20,0,0">Variables</RadioButton>
+                    <TextBlock Text="{Binding SimuVM.IsFix}"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
+
+                    <Label Content="Valeur du taux fixe en % :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,0,0,0" />
+                    <TextBox TextWrapping="Wrap" Text="{Binding SimuVM.TauxFixe, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="23" Width="100" Margin="750,0,0,0"/>
+                    <TextBlock Text="{Binding SimuVM.TauxFixe}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,20,0,0"/>
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Echéance du swap : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0"/>
+                    <ComboBox Name="Dates" ItemsSource="{Binding SimuVM.ListMaturities}" SelectedItem="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="25" Margin="120,50,0,0">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,50,0,0"/>
+                </Grid>
+
+            </StackPanel>
+        </TabItem>
+            <TabItem Header="Courbe de taux">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="126*"/>
@@ -36,5 +58,4 @@
 
         </TabControl>
 
-    </Grid>
 </Window>

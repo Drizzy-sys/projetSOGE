@@ -29,7 +29,11 @@ namespace projetSOGECIB
         private ChartValues<double> valuesTaux { get; set; }
         private bool isFix;
 
-        private DateTime maturitySwap = DateTime.Today;
+        public BindableCollection<DateTime> ListMaturities { get; set; }
+
+        private DateTime maturitySwap;
+        private double nominal;
+        private double tauxFixe;
         public SimulationVM()
         {
             List<TauxSpot> listTaux = createList();
@@ -51,6 +55,8 @@ namespace projetSOGECIB
                 Series[0].Values.Add(spt.Value * 100);
                 Labels.Add(spt.Maturity.ToShortDateString() );
             }
+            ListMaturities = new BindableCollection<DateTime> {DateTime.Today.AddYears(1), DateTime.Today.AddYears(2), DateTime.Today.AddYears(3), DateTime.Today.AddYears(5), DateTime.Today.AddYears(10), DateTime.Today.AddYears(20)};
+            maturitySwap = ListMaturities.First();
         }
 
         public bool IsFix
@@ -70,6 +76,26 @@ namespace projetSOGECIB
                 SetProperty(ref maturitySwap, value);
             }
         }
+
+        public double Nominal
+        {
+            get { return nominal; }
+            set
+            {
+                SetProperty(ref nominal, value);
+            }
+        }
+        public double TauxFixe
+        {
+            get { return tauxFixe; }
+            set
+            {
+                SetProperty(ref tauxFixe, value);
+            }
+
+        }
+
+
 
         public ChartValues<double> GetChartValues(List<double> valeurs)
         {
