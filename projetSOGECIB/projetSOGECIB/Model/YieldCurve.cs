@@ -17,20 +17,20 @@ namespace projetSOGECIB.Model
             this.Spots = new List<TauxSpot>();
         }
 
-        public void Compute(List<ITaux> taux)
+        public void Compute(DateTime startDate, List<ITaux> taux)
         {
 
             List<TauxSpot> spotTampon = new List<TauxSpot>();
 
             foreach (ITaux tx in taux)
             {
-                if (tx.StartDate == DateTime.Today)
+                if (tx.StartDate == startDate)
                 {
-                    spotTampon.Add(new TauxSpot(tx.Maturity, tx.Value));
+                    spotTampon.Add(new TauxSpot(startDate, tx.Maturity, tx.Value));
                 }
                 else
                 {
-                    spotTampon.Add(new TauxSpot(spotTampon.Find(x => x.Maturity == tx.StartDate), tx));
+                    spotTampon.Add(new TauxSpot(startDate, spotTampon.Find(x => x.Maturity == tx.StartDate), tx));
                 }
             }
             IEnumerable<TauxSpot> EnumerableSpot = spotTampon.OrderBy(x => x.Maturity);

@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Swap.cs" />
     <Compile Include="Model\Taux\ITaux.cs" />
     <Compile Include="Model\Taux\TauxForward.cs" />
     <Compile Include="Model\Taux\TauxSpot.cs" />

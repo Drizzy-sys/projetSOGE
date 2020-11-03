@@ -7,7 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <TabControl Margin="0,10,10.333,-0.333">
-        <TabItem Header="Settings du Swap">
+
+        <TabItem Header="Courbe de taux">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="126*"/>
+                    <ColumnDefinition Width="815*"/>
+                </Grid.ColumnDefinitions>
+                <lvc:CartesianChart Series="{Binding SimuVM.Series}" LegendLocation="Right"  Background="White" Margin="10,80,27.8,33.8" Grid.ColumnSpan="2">
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Valeurs" LabelFormatter="{Binding SimuVM.YFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Maturité" Labels="{Binding SimuVM.Labels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Détermination du Swap">
             <StackPanel Margin="50">
                 <Grid>
                     <Label Content="Valeur du nominal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
@@ -36,26 +53,16 @@
                     </ComboBox>
                     <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,50,0,0"/>
                 </Grid>
+                <Grid>
+                    <Button Command="{Binding SimuVM.CalculSwap}" Content="Calculer la valeur du swap" Margin="100,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="200">
+                    </Button>
+
+                    
+                    <TextBlock Text="{Binding SimuVM.ValeurSwap}" Margin="500,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                </Grid>
 
             </StackPanel>
         </TabItem>
-            <TabItem Header="Courbe de taux">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="126*"/>
-                        <ColumnDefinition Width="815*"/>
-                    </Grid.ColumnDefinitions>
-                    <lvc:CartesianChart Series="{Binding SimuVM.Series}" LegendLocation="Right"  Background="White" Margin="10,80,27.8,33.8" Grid.ColumnSpan="2">
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Title="Values" LabelFormatter="{Binding SimuVM.YFormatter}"></lvc:Axis>
-                        </lvc:CartesianChart.AxisY>
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Date" Labels="{Binding SimuVM.Labels}"></lvc:Axis>
-                        </lvc:CartesianChart.AxisX>
-                    </lvc:CartesianChart>
-                </Grid>
-            </TabItem>
-
-        </TabControl>
+    </TabControl>
 
 </Window>

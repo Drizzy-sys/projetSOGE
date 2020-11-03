@@ -9,17 +9,17 @@ namespace projetSOGECIB.Model.Taux
 {
     class TauxSpot : ITaux
     {
-        public TauxSpot(DateTime maturity, double value)
+        public TauxSpot(DateTime startDate, DateTime maturity, double value)
         {
-            this.StartDate = DateTime.Today;
+            this.StartDate = startDate;
             this.Maturity = maturity;
             this.Value = value;
         }
 
-        public TauxSpot(ITaux tauxSpot, ITaux tauxForward)
+        public TauxSpot(DateTime startDate, ITaux tauxSpot, ITaux tauxForward)
         {
             Debug.Assert(tauxSpot.Maturity == tauxForward.StartDate);
-            this.StartDate = DateTime.Today;
+            this.StartDate = startDate;
             this.Maturity = tauxForward.Maturity;
             this.SetValue2(tauxSpot, tauxForward);
         }
