@@ -8,7 +8,7 @@ namespace projetSOGECIB.Model.Taux
 {
     class ITaux
     {
-        public double nbDaysPerYear = 360;
+        public double nbDaysPerYear = 365;
         public DateTime Maturity { get; set; }
         public DateTime StartDate { get; set; }
         public double Value { get; set; }

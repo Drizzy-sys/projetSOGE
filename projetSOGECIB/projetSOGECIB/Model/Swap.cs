@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using projetSOGECIB.Model.Interpolation;
+using projetSOGECIB.Model.Taux;
 using Xamarin.Forms.Internals;
 
 namespace projetSOGECIB.Model
@@ -12,45 +14,84 @@ namespace projetSOGECIB.Model
     {
         private double Nominal;
         private DateTime StartDate;
-        private DateTime Maturité;
-        private double TauxFixe;
-        private double Value;
-        private double Frequence;
+        private DateTime Maturity;
+        private double FrequenceFixe;
+        private double FrequenceVariable;
+        private double tauxActualisation = 2.5 / 100;
 
-        public Swap(double nominal, DateTime startDate, DateTime maturité, double tauxFixe, double frequence)
+
+        public Swap(double nominal, DateTime startDate, DateTime maturity, double frequenceFixe, double frequenceVariable)
         {
             this.Nominal = nominal;
             this.StartDate = startDate;
-            this.Maturité = maturité;
-            this.TauxFixe = tauxFixe;
-            this.Frequence = frequence;
-            this.Value = SetValue();
+            this.Maturity = maturity;
+            this.FrequenceFixe = frequenceFixe;
+            this.FrequenceVariable = frequenceVariable;
         }
 
-        private double SetValue()
+        public double GetPeriodeActualisation(double frequence)
         {
-            double res = this.Nominal;
+            double res = (DateTime.Today - StartDate).TotalDays;
 
-            for(double i=0; i<(DateTime.Today - StartDate).TotalDays ; i += Frequence)
+            while (res >= frequence)
             {
-
-                res -= Nominal * TauxFixe * CalculActu();
+                res -= frequence;
             }
-            res -= Nominal * CalculActu();
 
             return res;
         }
 
-        private double CalculActu()
+        public double CalculJambeFixe(double tauxFixe)
         {
-            double actu = 0;
+            double res = 0;
+            double fraction = GetPeriodeActualisation(FrequenceFixe) / FrequenceFixe;
+            double nbJours = (Maturity - DateTime.Today).TotalDays;
+            
 
-            return actu;
+            while (nbJours >= FrequenceFixe)
+            {
+                res += Nominal * tauxFixe * Math.Pow(1 + tauxActualisation, -fraction);
+                fraction++;
+                nbJours -= FrequenceFixe;
+            }
+
+            res += Nominal * Math.Pow(1 + tauxActualisation, -fraction);
+
+            return res;
+
         }
-
-        public double GetValue()
+        
+        public double CalculJambeVariable(YieldCurve curve)
         {
-            return Value;
+            InterpolationLineaire inter = new InterpolationLineaire(curve);
+
+            double nbJours = GetPeriodeActualisation(FrequenceVariable);
+            double fraction = nbJours / FrequenceVariable;
+            
+            TauxSpot first = new TauxSpot(StartDate, DateTime.Today.AddDays(nbJours), inter.CalculValue(DateTime.Today.AddDays(nbJours)));
+            nbJours += FrequenceVariable;
+            TauxSpot second = new TauxSpot(StartDate, DateTime.Today.AddDays(nbJours), inter.CalculValue(DateTime.Today.AddDays(nbJours)));
+            nbJours += FrequenceVariable;
+            TauxForward forward = new TauxForward(first, second);
+
+            double res = Nominal * forward.Value * Math.Pow(1 + tauxActualisation, -fraction);
+
+
+            while ((Maturity - DateTime.Today.AddDays(nbJours)).TotalDays > 0)
+            {
+                first = second;
+                second = new TauxSpot(StartDate, DateTime.Today.AddDays(nbJours), inter.CalculValue(DateTime.Today.AddDays(nbJours)));
+                forward = new TauxForward(first, second);
+                fraction++;
+                res += Nominal * forward.Value * Math.Pow(1 + tauxActualisation, -fraction);
+                nbJours += FrequenceVariable;
+            }
+
+            res += Nominal * Math.Pow(1 + tauxActualisation, -fraction);
+
+
+
+            return res;
         }
 
     }

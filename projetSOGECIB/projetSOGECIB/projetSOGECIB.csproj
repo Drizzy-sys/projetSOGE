@@ -85,6 +85,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Interpolation\InterpolationLineaire.cs" />
+    <Compile Include="Model\ParserCSV.cs" />
     <Compile Include="Model\Swap.cs" />
     <Compile Include="Model\Taux\ITaux.cs" />
     <Compile Include="Model\Taux\TauxForward.cs" />

@@ -29,16 +29,16 @@
                 <Grid>
                     <Label Content="Valeur du nominal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Width="100" TextWrapping="Wrap" Text="{Binding SimuVM.Nominal, Mode=TwoWay}" VerticalAlignment="Top" Margin="150,0,0,0"/>
-                    <TextBlock Text="{Binding SimuVM.Nominal}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0"/>
+                    <!--TextBlock Text="{Binding SimuVM.Nominal}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0"/-->
 
                     <TextBlock Text="Payeur de taux :"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
                     <RadioButton GroupName="taux" IsChecked="{Binding SimuVM.IsFix, Mode=TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,0,0,0">Fixes</RadioButton>
                     <RadioButton GroupName="taux"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="172,20,0,0">Variables</RadioButton>
-                    <TextBlock Text="{Binding SimuVM.IsFix}"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
+                    <!--TextBlock Text="{Binding SimuVM.IsFix}"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/-->
 
                     <Label Content="Valeur du taux fixe en % :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,0,0,0" />
                     <TextBox TextWrapping="Wrap" Text="{Binding SimuVM.TauxFixe, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="23" Width="100" Margin="750,0,0,0"/>
-                    <TextBlock Text="{Binding SimuVM.TauxFixe}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,20,0,0"/>
+                    <!--TextBlock Text="{Binding SimuVM.TauxFixe}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="500,20,0,0"/-->
                 </Grid>
                 <Grid>
                     <TextBlock Text="Echéance du swap : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0"/>
@@ -51,11 +51,18 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,50,0,0"/>
+                    <DatePicker SelectedDate="{Binding SimuVM.MaturitySwap, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20,50,0,0"/>
+
+                    <TextBlock Text="Fréquence de taux fixe : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="300,50,0,0"/>
+                    <TextBox HorizontalAlignment="Center" Height="23" Width="100" TextWrapping="Wrap" Text="{Binding SimuVM.FrequenceFixe, Mode=TwoWay}" VerticalAlignment="Top" Margin="530,50,0,0"/>
+                    <TextBox HorizontalAlignment="Center" Height="23" Width="100" TextWrapping="Wrap" Text="{Binding SimuVM.FrequenceVariable, Mode=TwoWay}" VerticalAlignment="Top" Margin="570,100,0,0"/>
+                    <TextBlock Text="Fréquence de taux variable : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="322,100,0,0"/>
+
                 </Grid>
                 <Grid>
-                    <Button Command="{Binding SimuVM.CalculSwap}" Content="Calculer la valeur du swap" Margin="100,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="200">
+                    <Button Name="CalcSwap" Command="{Binding CalculCommand}" Content="Calculer la valeur du swap" Margin="100,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="200">
                     </Button>
+
 
                     
                     <TextBlock Text="{Binding SimuVM.ValeurSwap}" Margin="500,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" />

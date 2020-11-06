@@ -25,5 +25,7 @@ namespace projetSOGECIB
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
         }
+
+        
     }
 }
