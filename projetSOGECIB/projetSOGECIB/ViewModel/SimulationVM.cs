@@ -159,25 +159,25 @@ namespace projetSOGECIB
             List<ITaux> ListTaux = parser.GetListTaux();*/
 
             List<ITaux> ListTaux = new List<ITaux>();
-            ListTaux.Add(new TauxSpot(new DateTime(2020, 07, 02), new DateTime(2020, 08, 02), 0.34844));
-            ListTaux.Add(new TauxSpot(new DateTime(2020, 07, 02), new DateTime(2020, 09, 02), 0.43188));
-            ListTaux.Add(new TauxSpot(new DateTime(2020, 07, 02), new DateTime(2020, 10, 04), 0.53394));
-            ListTaux.Add(new TauxForward(new DateTime(2020, 08, 02), new DateTime(2020, 11, 02), 0.561));
-            ListTaux.Add(new TauxForward(new DateTime(2020, 09, 02), new DateTime(2020, 12, 02), 0.617));
-            ListTaux.Add(new TauxForward(new DateTime(2020, 10, 04), new DateTime(2021, 01, 03), 0.7075));
-            ListTaux.Add(new TauxForward(new DateTime(2020, 11, 02), new DateTime(2021, 02, 02), 0.73));
-            ListTaux.Add(new TauxForward(new DateTime(2020, 12, 02), new DateTime(2021, 03, 02), 0.745));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 01, 03), new DateTime(2021, 04, 04), 0.765));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 02, 02), new DateTime(2021, 05, 03), 0.787));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 03, 02), new DateTime(2021, 06, 02), 0.817));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 04, 04), new DateTime(2021, 07, 04), 0.85));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 07, 04), new DateTime(2021, 10, 03), 0.957));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 07, 04), new DateTime(2022, 1, 03), 1.21));
-            ListTaux.Add(new TauxForward(new DateTime(2021, 07, 04), new DateTime(2022, 7, 02), 1.495));
-            ListTaux.Add(new TauxForward(new DateTime(2022, 07, 02), new DateTime(2025, 7, 02), 1.588));
-            ListTaux.Add(new TauxForward(new DateTime(2025, 07, 02), new DateTime(2030, 7, 02), 1.745));
-            ListTaux.Add(new TauxForward(new DateTime(2030, 07, 02), new DateTime(2040, 7, 02), 1.887));
-            ListTaux.Add(new TauxForward(new DateTime(2040, 07, 02), new DateTime(2050, 7, 02), 2.102));
+            ListTaux.Add(new TauxSpot(new DateTime(2020, 07, 02), new DateTime(2020, 08, 02), 0.34844/100));
+            ListTaux.Add(new TauxSpot(new DateTime(2020, 07, 02), new DateTime(2020, 09, 02), 0.43188 / 100));
+            ListTaux.Add(new TauxSpot(new DateTime(2020, 07, 02), new DateTime(2020, 10, 04), 0.53394 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2020, 08, 02), new DateTime(2020, 11, 02), 0.561 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2020, 09, 02), new DateTime(2020, 12, 02), 0.617 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2020, 10, 04), new DateTime(2021, 01, 03), 0.7075 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2020, 11, 02), new DateTime(2021, 02, 02), 0.73 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2020, 12, 02), new DateTime(2021, 03, 02), 0.745 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 01, 03), new DateTime(2021, 04, 04), 0.765 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 02, 02), new DateTime(2021, 05, 03), 0.787 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 03, 02), new DateTime(2021, 06, 02), 0.817 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 04, 04), new DateTime(2021, 07, 04), 0.85 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 07, 04), new DateTime(2021, 10, 03), 0.957 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 07, 04), new DateTime(2022, 1, 03), 1.21 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2021, 07, 04), new DateTime(2022, 7, 02), 1.495 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2022, 07, 02), new DateTime(2025, 7, 02), 1.588 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2025, 07, 02), new DateTime(2030, 7, 02), 1.745 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2030, 07, 02), new DateTime(2040, 7, 02), 1.887 / 100));
+            ListTaux.Add(new TauxForward(new DateTime(2040, 07, 02), new DateTime(2050, 7, 02), 2.102 / 100));
 
             startDateSwap = ListTaux.First().StartDate;
 
