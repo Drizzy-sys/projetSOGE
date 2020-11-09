@@ -33,7 +33,7 @@ namespace projetSOGECIB.Model
         {
             double res = (DateTime.Today - StartDate).TotalDays;
 
-            while (res >= frequence)
+            while (res > frequence)
             {
                 res -= frequence;
             }

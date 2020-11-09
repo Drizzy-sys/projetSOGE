@@ -40,8 +40,6 @@ namespace projetSOGECIB.Model
                 StartDate.Add(values[1]);
                 EndDate.Add(values[2]);
                 Value.Add(values[3]);
-
-                
             }
 
             for(int i=1; i<Type.Count(); i++)
