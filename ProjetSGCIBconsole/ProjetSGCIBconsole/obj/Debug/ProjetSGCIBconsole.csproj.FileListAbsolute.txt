@@ -1,8 +1,0 @@
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\bin\Debug\ProjetSGCIBconsole.exe.config
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\bin\Debug\ProjetSGCIBconsole.exe
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\bin\Debug\ProjetSGCIBconsole.pdb
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\obj\Debug\ProjetSGCIBconsole.csprojAssemblyReference.cache
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\obj\Debug\ProjetSGCIBconsole.csproj.CoreCompileInputs.cache
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\obj\Debug\ProjetSGCIBconsole.exe
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\obj\Debug\ProjetSGCIBconsole.pdb
-C:\Users\admin\Documents\code\projetSOGE\ProjetSGCIBconsole\ProjetSGCIBconsole\obj\Debug\ProjetSGCIBconsole.csproj.ResolveComReference.cache
