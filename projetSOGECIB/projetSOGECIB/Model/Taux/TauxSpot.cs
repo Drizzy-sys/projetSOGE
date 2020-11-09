@@ -21,21 +21,11 @@ namespace projetSOGECIB.Model.Taux
             Debug.Assert(tauxSpot.Maturity == tauxForward.StartDate);
             this.StartDate = startDate;
             this.Maturity = tauxForward.Maturity;
-            this.SetValue2(tauxSpot, tauxForward);
+            this.SetValue(tauxSpot, tauxForward);
         }
 
-        public void SetValue(TauxSpot tauxSpot, TauxForward tauxForward)
-        {
-            double taux;
-            double nbDaysForward = (tauxForward.Maturity - tauxForward.StartDate).Days;
-            double nbDaysSpot = (tauxSpot.Maturity - tauxSpot.StartDate).Days;
-            double nbDaysActualSpot = (this.Maturity - this.StartDate).Days;
-            taux = ((tauxForward.Value * nbDaysForward / nbDaysPerYear + 1) * (tauxSpot.Value * nbDaysSpot / nbDaysPerYear + 1) - 1) * nbDaysPerYear / nbDaysActualSpot;
 
-            this.Value = taux;
-        }
-
-        public void SetValue2(ITaux spot, ITaux forward)
+        public void SetValue(ITaux spot, ITaux forward)
         {
             double taux;
             double nbDaysForward = (forward.Maturity - forward.StartDate).Days / nbDaysPerYear;

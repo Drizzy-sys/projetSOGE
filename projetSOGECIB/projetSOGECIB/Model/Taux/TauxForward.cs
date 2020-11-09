@@ -13,7 +13,7 @@ namespace projetSOGECIB.Model.Taux
         {
             this.StartDate = taux1.Maturity;
             this.Maturity = taux2.Maturity;
-            this.SetValue2(taux1, taux2);
+            this.SetValue(taux1, taux2);
         }
 
         public TauxForward(DateTime startDate, DateTime maturity, double value)
@@ -24,15 +24,6 @@ namespace projetSOGECIB.Model.Taux
         }
 
         public void SetValue(TauxSpot taux1, TauxSpot taux2)
-        {
-            double d1 = (taux1.Maturity - taux1.StartDate).Days / nbDaysPerYear;
-            double d2 = (taux2.Maturity - taux2.StartDate).Days / nbDaysPerYear;
-
-            double taux = ((1 + taux2.Value * d2) / (1 + taux1.Value * d1) - 1) / (d2 - d1);
-            this.Value = taux;
-        }
-
-        public void SetValue2(TauxSpot taux1, TauxSpot taux2)
         {
             double nbDays1 = (taux1.Maturity - taux1.StartDate).Days;
             double nbDays2 = (taux2.Maturity - taux2.StartDate).Days;
